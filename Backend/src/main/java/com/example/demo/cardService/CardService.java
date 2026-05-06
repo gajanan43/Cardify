@@ -31,7 +31,7 @@ public class CardService {
        Card card = new Card();
        card.setTitle(title);
        card.setDescription(description);
-       card.setImageUrl("http://localhost:8080/uploads/" + fileName);
+       card.setImageUrl("https://cardify-production.up.railway.app/uploads/" + fileName);
 
        return cardRepo.save(card);
    }
@@ -106,7 +106,7 @@ public class CardService {
             file.transferTo(new File(uploadDir + newFileName));
 
             // ✅ 3. Update image URL
-            existingCard.setImageUrl("http://localhost:8080/uploads/" + newFileName);
+            existingCard.setImageUrl("https://cardify-production.up.railway.app/uploads/" + newFileName);
         }
 
         return cardRepo.save(existingCard);
