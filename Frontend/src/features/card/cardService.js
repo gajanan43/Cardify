@@ -1,6 +1,6 @@
 import { getToken, normalizeToken } from '../auth/authService';
 
-const BASE_URL = "http://localhost:8080/api/card";
+const BASE_URL = `${process.env.REACT_APP_API_URL}/api/card`;
 
 const authHeaders = () => {
     const token = normalizeToken(getToken());

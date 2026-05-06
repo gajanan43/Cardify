@@ -111,7 +111,7 @@ function CardList() {
         };
 
         fetchData();
-    }, [token]);
+    }, [token, logout, navigate]);
 
 
     const handleDelete = async (id) => {
