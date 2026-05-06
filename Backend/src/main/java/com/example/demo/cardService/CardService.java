@@ -3,6 +3,7 @@ package com.example.demo.cardService;
 import com.example.demo.cardRepo.CardRepo;
 import com.example.demo.model.Card;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +13,9 @@ import java.util.List;
 
 @Service
 public class CardService {
+
+    @Value("${app.base-url}")
+    private String baseUrl;
 
     @Autowired
     private CardRepo cardRepo;
@@ -31,7 +35,7 @@ public class CardService {
        Card card = new Card();
        card.setTitle(title);
        card.setDescription(description);
-       card.setImageUrl("https://cardify-production.up.railway.app/uploads/" + fileName);
+       card.setImageUrl(baseUrl +"/uploads/" + fileName);
 
        return cardRepo.save(card);
    }
@@ -106,7 +110,7 @@ public class CardService {
             file.transferTo(new File(uploadDir + newFileName));
 
             // ✅ 3. Update image URL
-            existingCard.setImageUrl("https://cardify-production.up.railway.app/uploads/" + newFileName);
+            existingCard.setImageUrl(baseUrl +"/uploads/" + newFileName);
         }
 
         return cardRepo.save(existingCard);
