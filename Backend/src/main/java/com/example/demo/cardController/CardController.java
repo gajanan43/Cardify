@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/card")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://cardify-lilac-iota.vercel.app")
 public class CardController {
 
     @Autowired
